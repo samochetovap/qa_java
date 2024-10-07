@@ -24,7 +24,7 @@ public class FelineTest {
 
     @Test
     public void getFamily() {
-        Assert.assertEquals(feline.getFamily(), "Кошачьи");
+        Assert.assertEquals("Кошачьи", feline.getFamily());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class FelineTest {
         Random random = new Random();
         int randKitten = random.nextInt();
         int kittensCount = feline.getKittens(randKitten);
-        Assert.assertEquals(kittensCount, randKitten);
+        Assert.assertEquals(randKitten, kittensCount);
     }
 
 }
