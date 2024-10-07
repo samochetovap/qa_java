@@ -21,8 +21,6 @@ public class LionParameterizedTest {
     @Mock
     private Feline feline;
 
-    @Rule
-    public final ExpectedException exception = ExpectedException.none();
     private final String sex;
 
     @Parameterized.Parameters
