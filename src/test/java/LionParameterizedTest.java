@@ -2,9 +2,7 @@ import com.example.Feline;
 import com.example.Lion;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
@@ -38,11 +36,10 @@ public class LionParameterizedTest {
 
     @Test
     public void doesHaveMane() throws Exception {
+        Lion lion = new Lion(sex, feline);
         if ("Самец".equals(sex)) {
-            Lion lion = new Lion(sex, feline);
             Assert.assertTrue(lion.doesHaveMane());
         } else if ("Самка".equals(sex)) {
-            Lion lion = new Lion(sex, feline);
             Assert.assertFalse(lion.doesHaveMane());
         }
     }
@@ -53,8 +50,8 @@ public class LionParameterizedTest {
             new Lion(sex, feline);
         } else if ("Самка".equals(sex)) {
             new Lion(sex, feline);
-        }else {
-            Assert.assertThrows(Exception.class,() -> new Lion(sex, feline));
+        } else {
+            Assert.assertThrows(Exception.class, () -> new Lion(sex, feline));
         }
 
     }
