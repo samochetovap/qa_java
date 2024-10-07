@@ -26,10 +26,9 @@ public class LionParameterizedTest {
     @Parameterized.Parameters
     public static Object[][] getParamsData() {
         return new Object[][]{
-                {"Не существующий пол"},
                 {"Самец"},
                 {"Самка"},
-                {"Еще один не существующий пол"},
+                {"Самка1"},
         };
     }
 
@@ -38,19 +37,26 @@ public class LionParameterizedTest {
     }
 
     @Test
-    public void doesHaveMane(){
-        try{
+    public void doesHaveMane() throws Exception {
+        if ("Самец".equals(sex)) {
             Lion lion = new Lion(sex, feline);
-            if ("Самец".equals(sex)) {
-                Assert.assertTrue(lion.doesHaveMane());
-            } else if ("Самка".equals(sex)) {
-                Assert.assertFalse(lion.doesHaveMane());
-            }
-        }catch(Exception e){
-            Assert.assertThrows("При создание конструктора с sex = " + sex + " возникла ошибка. ", Exception.class, () -> {
-                System.out.println(e.getMessage());
-            });
+            Assert.assertTrue(lion.doesHaveMane());
+        } else if ("Самка".equals(sex)) {
+            Lion lion = new Lion(sex, feline);
+            Assert.assertFalse(lion.doesHaveMane());
+        }
+    }
+
+    @Test
+    public void lionConstructor() throws Exception {
+        if ("Самец".equals(sex)) {
+            new Lion(sex, feline);
+        } else if ("Самка".equals(sex)) {
+            new Lion(sex, feline);
+        }else {
+            Assert.assertThrows(Exception.class,() -> new Lion(sex, feline));
         }
 
     }
+
 }
