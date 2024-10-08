@@ -1,7 +1,7 @@
 package com.example;
 
 import java.util.List;
-
+//кошка
 public class Cat {
 
     Predator predator;
