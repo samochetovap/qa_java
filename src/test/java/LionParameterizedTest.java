@@ -36,24 +36,14 @@ public class LionParameterizedTest {
 
     @Test
     public void doesHaveMane() throws Exception {
-        Lion lion = new Lion(sex, feline);
         if ("Самец".equals(sex)) {
+            Lion lion = new Lion(sex, feline);
             Assert.assertTrue(lion.doesHaveMane());
         } else if ("Самка".equals(sex)) {
+            Lion lion = new Lion(sex, feline);
             Assert.assertFalse(lion.doesHaveMane());
+        }else {
+            Assert.assertThrows("Исключение не пробросилось на конструктор с не ожидаемым sex", Exception.class, () -> new Lion(sex, feline));
         }
     }
-
-    @Test
-    public void lionConstructor() throws Exception {
-        if ("Самец".equals(sex)) {
-            new Lion(sex, feline);
-        } else if ("Самка".equals(sex)) {
-            new Lion(sex, feline);
-        } else {
-            Assert.assertThrows(Exception.class, () -> new Lion(sex, feline));
-        }
-
-    }
-
 }
